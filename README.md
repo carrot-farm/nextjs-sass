@@ -1,1 +1,1 @@
-# create-next-app example
+# react + nextjs + redux-saga

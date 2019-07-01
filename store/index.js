@@ -1,33 +1,30 @@
 /*
   스토어
 */
-import { createStore, applyMiddleware, compose, combineReducers } from "redux";
-// import penderMiddleware from "redux-pender";
+import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga"; // redux-saga 임포트
+import { createLogger } from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-// import * as modules from "./modules";
-// import * as modules from "./reducers";
 import rootSaga from "../sagas";
 import reducers from "../reducers";
 
-// const reducers = combineReducers(modules); //모듈 합치기
 const sagaMiddleware = createSagaMiddleware(); // saga 미들웨어 생성
-// const middlewares = [penderMiddleware(), sagaMiddleware()];
-// console.log("****_____, ", sagaMiddleware);
+let loggerMiddleware;
+let middlewares; // 미들웨어들
 
-// const configure = preloadedState =>
-//   createStore(
-//     reducers,
-//     preloadedState,
-//     compose(applyMiddleware(sagaMiddleware))
-//     // compose(applyMiddleware(...middlewares))
-//   );
-const store = createStore(
-  reducers,
-  applyMiddleware(sagaMiddleware) // redux-store 미들웨어 등록
-);
+// ===== 개발 환경 시 디버깅 툴 적용
+if (process && process.env && process.env.NODE_ENV === "development") {
+  loggerMiddleware = createLogger(); // 로거 미들웨어 생성
+  middlewares = composeWithDevTools(
+    applyMiddleware(sagaMiddleware, loggerMiddleware) // redux-store 미들웨어 등록
+  );
+} else {
+  middlewares = applyMiddleware(sagaMiddleware);
+}
+
+// ===== 스토어 생성
+const store = createStore(reducers, middlewares);
 sagaMiddleware.run(rootSaga); // saga 실행
-
-// const store = configure();
 
 export default store;

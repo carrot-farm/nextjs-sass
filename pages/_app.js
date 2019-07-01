@@ -3,8 +3,6 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "../store";
 
-// const store = configure();
-
 export default class MyApp extends App {
   render() {
     const {

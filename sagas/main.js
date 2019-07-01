@@ -61,7 +61,7 @@ function* watchRepeatTake() {
     yield take(REPEAT_TAKE);
     console.log("> i: ", i);
   }
-  console.log("> done");
+  console.log("> done: 더이상 실행안됨.");
 }
 
 export default [watchFetchData(), watchTakeFlow(), watchRepeatTake()];

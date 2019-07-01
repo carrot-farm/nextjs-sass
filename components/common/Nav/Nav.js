@@ -28,6 +28,11 @@ const Nav = () => (
           <a>User hello</a>
         </Link>
       </li>
+      <li>
+        <Link route="grid">
+          <a>material grid</a>
+        </Link>
+      </li>
     </ul>
   </>
 );
