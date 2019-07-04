@@ -1,4 +1,4 @@
-import { put, takeEvery, all, call, take, select } from "redux-saga/effects";
+import { put, takeEvery, call, take, select, fork } from "redux-saga/effects";
 
 import * as api from "../lib/api";
 import { main } from "../actions";
@@ -59,9 +59,10 @@ function* watchTakeFlow() {
 function* watchRepeatTake() {
   for (let i = 0; i < 3; i++) {
     yield take(REPEAT_TAKE);
-    console.log("> i: ", i);
+    // console.log("> i: ", i);
   }
-  console.log("> done: 더이상 실행안됨.");
+  // console.log("> done: 더이상 실행안됨.");
 }
 
-export default [watchFetchData(), watchTakeFlow(), watchRepeatTake()];
+// export default [watchFetchData(), watchTakeFlow(), watchRepeatTake()];
+export default [watchFetchData, watchTakeFlow, watchRepeatTake];

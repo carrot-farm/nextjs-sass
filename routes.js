@@ -12,6 +12,11 @@ routes
     name: "grid",
     pattern: "/materialUi/grid",
     page: "materialUi/grid"
+  })
+  .add({
+    name: "dashboard",
+    pattern: "/materialUi/dashboard",
+    page: "materialUi/dashboard"
   });
 
 module.exports = routes;

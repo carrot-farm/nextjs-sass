@@ -1,14 +1,35 @@
-import { Grid } from "@material-ui/core";
+import { Container, Grid, Paper, Typography } from "@material-ui/core";
 
-// import classNames from "classnames/bind";
+import classNames from "classnames/bind";
 
-// import styles from "./styles.scss";
+import styles from "./styles.scss";
 
-// const cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
 const Main = ({}) => (
   <>
-    <div>grid</div>
+    {/* <Container maxWidth={"lg"}> */}
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Paper>xs 12</Paper>
+      </Grid>
+      {/* <Grid item xs={4}>
+      <Paper>xs 12</Paper>
+    </Grid>
+    <Grid item xs={4}>
+      <Paper>xs 12</Paper>
+    </Grid>
+    <Grid item xs={4}>
+      <Paper>xs 12</Paper>
+    </Grid>
+    <Grid item xs={4}>
+      <Paper>xs 12</Paper>
+    </Grid>
+    <Grid item xs={4}>
+      <Paper>xs 12</Paper>
+    </Grid> */}
+    </Grid>
+    {/* </Container> */}
   </>
 );
 

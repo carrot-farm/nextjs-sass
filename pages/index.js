@@ -1,8 +1,16 @@
+import { useEffect } from "react";
+
 import PageTemplate from "../components/templates/PageTemplate";
 import MainContainer from "../containers/pages/MainContainer";
 
-const main = ({ url }) => {
+const Main = ({ url }) => {
   return <PageTemplate url={url} Main={MainContainer} />;
 };
 
-export default main;
+// Main.getInitialProps = () => {
+//   return {
+//     data: "tata"
+//   };
+// };
+
+export default Main;
