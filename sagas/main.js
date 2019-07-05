@@ -39,17 +39,19 @@ function* takeFlowLogic() {
   ===========================*/
 // ===== takeEvery - 언제나 감시한다.
 function* watchFetchData() {
+  console.log("*** watchFetchData");
   yield takeEvery(FETCH_REQUESTED, fetchTest);
 }
 
 // ===== take flow task 테스트
 function* watchTakeFlow() {
+  console.log("*** watchTakeFlow");
   while (true) {
     // take/TEST.A
     yield take(TAKE_TEST_A);
     yield takeFlowLogic();
 
-    // take/TEST.B
+    // // take/TEST.B
     yield take(TAKE_TEST_B);
     yield takeFlowLogic();
   }
@@ -57,11 +59,12 @@ function* watchTakeFlow() {
 
 // ===== 지정 순회, i가 2까지 출력 후 done 출력
 function* watchRepeatTake() {
+  console.log("*** watchRepeatTake");
   for (let i = 0; i < 3; i++) {
     yield take(REPEAT_TAKE);
-    // console.log("> i: ", i);
+    console.log("> i: ", i);
   }
-  // console.log("> done: 더이상 실행안됨.");
+  console.log("> done: 더이상 실행안됨.");
 }
 
 // export default [watchFetchData(), watchTakeFlow(), watchRepeatTake()];

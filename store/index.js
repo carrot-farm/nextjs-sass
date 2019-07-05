@@ -17,7 +17,8 @@ let middlewares; // 미들웨어들
 if (process && process.env && process.env.NODE_ENV === "development") {
   loggerMiddleware = createLogger(); // 로거 미들웨어 생성
   middlewares = composeWithDevTools(
-    applyMiddleware(sagaMiddleware, loggerMiddleware) // redux-store 미들웨어 등록
+    // applyMiddleware(sagaMiddleware, loggerMiddleware) // redux-store 미들웨어 등록
+    applyMiddleware(sagaMiddleware) // redux-store 미들웨어 등록
   );
 } else {
   middlewares = applyMiddleware(sagaMiddleware);

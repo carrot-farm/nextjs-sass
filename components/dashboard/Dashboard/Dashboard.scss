@@ -1,0 +1,41 @@
+.dashborad-root {
+  display: flex;
+  .app-bar-root {
+    &.isOpen {
+      // transform: translate3d(-0px, 0, 0);
+      width: calc(100% - 240px);
+    }
+    z-index: 1201;
+    transition: all 0.2s linear;
+    .menu-button {
+      margin-right: 16px;
+      &.hide {
+        display: none;
+      }
+    }
+    .title {
+      // 빈공간을채워서 오르쪽 아이콘을 민다.
+      flex-grow: 1;
+    }
+  }
+  // ===== 컨텐츠
+  .main_content-wrpper {
+    flex-grow: 1;
+    height: 100vh;
+    overflow: auto;
+    transition: all 0.2s linear;
+    .main_top-space {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 84px;
+    }
+    .paper {
+      padding: 12px;
+      display: flex;
+      overflow: auto;
+      flex-direction: column;
+      height: 240px;
+    }
+  }
+}

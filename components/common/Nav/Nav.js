@@ -48,6 +48,11 @@ const Nav = ({ url }) => {
             <a>material dashboard</a>
           </Link>
         </li>
+        <li>
+          <Link route="scrollmagic">
+            <a>gsap/scrollmagic</a>
+          </Link>
+        </li>
       </ul>
     </>
   );

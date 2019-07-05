@@ -1,0 +1,26 @@
+.drawer-root {
+  & > div {
+    position: relative;
+  }
+  .drawer-paper {
+    position: relative;
+    transition: all 0.2s linear;
+    &.isOpen {
+      width: 240px;
+      white-space: nowrap;
+    }
+    overflow-x: hidden;
+    width: 64px;
+    white-space: nowrap;
+    .drawer-row {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      &.top {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

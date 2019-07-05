@@ -1,0 +1,21 @@
+.dashborad-root {
+  flex-grow: 1;
+  .app-bar-root {
+    z-index: 1201;
+    transition: all 0.2s linear;
+    &.isOpen {
+      // transform: translate3d(-0px, 0, 0);
+      width: calc(100% - 240px);
+    }
+    .menu-button {
+      margin-right: 16px;
+      &.hide {
+        display: none;
+      }
+    }
+    .title {
+      // 빈공간을채워서 오르쪽 아이콘을 민다.
+      flex-grow: 1;
+    }
+  }
+}

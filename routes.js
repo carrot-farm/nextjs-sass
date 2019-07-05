@@ -17,6 +17,11 @@ routes
     name: "dashboard",
     pattern: "/materialUi/dashboard",
     page: "materialUi/dashboard"
+  })
+  .add({
+    name: "scrollmagic",
+    pattern: "scrollmagic",
+    page: "scrollmagic"
   });
 
 module.exports = routes;
