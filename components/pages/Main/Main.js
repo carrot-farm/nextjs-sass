@@ -7,12 +7,14 @@
 const Main = ({
   num,
   takeTestText,
+  throttleNum,
   handleFetchDataCilck,
   handleIncClick,
   handleDecClick,
   handleTakeAClick,
   handleTakeBClick,
-  handleRepeatTakeClick
+  handleRepeatTakeClick,
+  handleThrottleClick
 }) => (
   <>
     <hgroup>
@@ -40,6 +42,11 @@ const Main = ({
     </div>
     <div>
       <button onClick={handleRepeatTakeClick}>repeatTake</button>
+    </div>
+    <div>
+      {throttleNum}
+      <br />
+      <button onClick={handleThrottleClick}>throttle</button>
     </div>
   </>
 );

@@ -7,13 +7,15 @@ const {
   DEC_COUNT,
   FETCH_SUCCEEDED,
   FETCH_FAILED,
-  SET_TAKE_TEXT
+  SET_TAKE_TEXT,
+  INC_THROTTLE_NUM
 } = main.types;
 
 const initialState = Map({
   num: 0,
   visitNum: 0, // 방문 횟수
-  takeTestText: null
+  takeTestText: null,
+  throttleNum: 0 // 쓰로틀링 테스트
 });
 
 export default handleActions(
@@ -37,6 +39,9 @@ export default handleActions(
     [SET_TAKE_TEXT]: (state, { payload: { take } }) => {
       console.log("> SET_TAKE_TEXT reducer: ", take);
       return state.set("takeTestText", take);
+    },
+    [INC_THROTTLE_NUM]: state => {
+      return state.set("throttleNum", state.get("throttleNum") + 1);
     }
   },
   initialState

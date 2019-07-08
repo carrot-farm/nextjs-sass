@@ -1,4 +1,11 @@
-import { put, takeEvery, call, take, select, fork } from "redux-saga/effects";
+import {
+  put,
+  takeEvery,
+  call,
+  take,
+  select,
+  throttle
+} from "redux-saga/effects";
 
 import * as api from "../lib/api";
 import { main } from "../actions";
@@ -10,8 +17,12 @@ const {
   SET_TAKE_TEXT,
   TAKE_TEST_A,
   TAKE_TEST_B,
-  REPEAT_TAKE
+  REPEAT_TAKE,
+  INC_THROTTLE_NUM,
+  HANDLE_THROTTLE_NUM
 } = main.types;
+
+const { incThrottleNum } = main.actions;
 
 // ===== 비동기 통신 테스트
 export function* fetchTest(action) {
@@ -32,6 +43,12 @@ function* takeFlowLogic() {
     type: SET_TAKE_TEXT,
     payload: { take: takeTestText + 1 }
   });
+}
+
+// ===== throttle num  증가
+function* incThrottleNumSaga() {
+  console.log("> incThrottleNum: ", incThrottleNum());
+  yield put(incThrottleNum());
 }
 
 /* ===========================
@@ -67,5 +84,11 @@ function* watchRepeatTake() {
   console.log("> done: 더이상 실행안됨.");
 }
 
+// ===== 쓰로틀링 테스트
+function* watchThrottle() {
+  console.log("*** watchThrottle");
+  yield throttle(1000, HANDLE_THROTTLE_NUM, incThrottleNumSaga);
+}
+
 // export default [watchFetchData(), watchTakeFlow(), watchRepeatTake()];
-export default [watchFetchData, watchTakeFlow, watchRepeatTake];
+export default [watchFetchData, watchTakeFlow, watchRepeatTake, watchThrottle];

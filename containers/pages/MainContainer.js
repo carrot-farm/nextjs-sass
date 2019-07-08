@@ -45,18 +45,26 @@ class MainContainer extends Component {
     MainActions.repeatTake();
   };
 
+  // ===== test chrottle
+  handleThrottleClick = () => {
+    const { MainActions } = this.props;
+    MainActions.handleThrottleNum();
+  };
+
   render() {
-    const { num, takeTestText } = this.props;
+    const { num, takeTestText, throttleNum } = this.props;
     return (
       <Main
         num={num}
         takeTestText={takeTestText}
+        throttleNum={throttleNum}
         handleIncClick={this.handleIncClick}
         handleDecClick={this.handleDecClick}
         handleTakeAClick={this.handleTakeAClick}
         handleTakeBClick={this.handleTakeBClick}
         handleFetchDataCilck={this.handleFetchDataCilck}
         handleRepeatTakeClick={this.handleRepeatTakeClick}
+        handleThrottleClick={this.handleThrottleClick}
       />
     );
   }
@@ -65,7 +73,8 @@ class MainContainer extends Component {
 export default connect(
   state => ({
     num: state.main.get("num"),
-    takeTestText: state.main.get("takeTestText")
+    takeTestText: state.main.get("takeTestText"),
+    throttleNum: state.main.get("throttleNum")
   }),
   dispatch => ({
     MainActions: bindActionCreators(main.actions, dispatch)
